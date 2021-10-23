@@ -1,0 +1,21 @@
+CREATE TABLE `order_detail` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) NOT NULL COMMENT '订单编码',
+  `product_id` int(11) NOT NULL COMMENT '商品编码',
+  `product_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '商品名称',
+  `product_price` decimal(12,4) NOT NULL COMMENT '商品价格',
+  `product_sku` int(11) NOT NULL COMMENT '商品SKU',
+  `product_picture_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `product_mode_desc` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '商品型号信息',
+  `product_mode_params` int(11) DEFAULT NULL COMMENT '商品型号参数',
+  `discount_rate` tinyint(4) NOT NULL DEFAULT '0' COMMENT '折扣比例',
+  `discount_amount` decimal(12,4) NOT NULL DEFAULT '0.0000' COMMENT '折扣比例',
+  `number` int(11) NOT NULL DEFAULT '1' COMMENT '购买数量',
+  `subtotal` decimal(12,4) NOT NULL COMMENT '小计金额',
+  `is_product_exists` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0' COMMENT '商品是否有效 1失效',
+  `remark` text COLLATE utf8mb4_unicode_ci COMMENT '客户商品备注',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `order_detail_order_id_index` (`order_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
